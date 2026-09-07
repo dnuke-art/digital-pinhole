@@ -16,6 +16,8 @@ Or run a generator directly:
     python3 mockups/render3d.py    # 3D cutaway render        -> out/render_relay_cutaway.png
     python3 mockups/looks2.py      # aperture experiments + dither styles -> out/look2_*.png, dither_*.png, experiments_sheet.png, dither_sheet.png
     python3 mockups/looks3.py      # gratings and zone plate -> out/look3_*.png, grating_sheet.png
+    python3 mockups/looks4.py      # curved gratings -> out/look4_*.png, curved_grating_sheet.png
+    make optics                    # FreeCAD Optics Workbench ray traces -> out/optics_*.png (needs freecadcmd + addon)
 
 Sample photos in `src/` are from picsum.photos (Unsplash) and are only here
 as stand-ins for the simulations.
@@ -55,6 +57,21 @@ Physics in [docs/08](../docs/08-apertures-and-dither.md).
 Linear grating over the pinhole at night and in daylight, the zone plate
 pattern, the zone plate as captured in white light, and the digital fix
 (halo subtraction, luminance from green). Physics in [docs/09](../docs/09-diffraction-grating.md).
+
+## Curved gratings (`out/look4_*.png`, sheet `curved_grating_sheet.png`)
+
+Concave grating spectrograph in daylight (slit through the castle) and at
+night (lamp fingerprints), and the circular constant-pitch aperture with
+rainbow rings. Physics in [docs/10](../docs/10-curved-grating.md).
+
+## FreeCAD ray traces (`out/optics_*.png`)
+
+`fc_optics.py` runs under FreeCAD's own python (freecadcmd) with the
+OpticsWorkbench addon and writes hit coordinates to JSON; `optics_plot.py`
+plots them. Two scenes: a 500 l/mm film behind the pinhole, and the Rowland
+concave-grating spectrograph. `make optics` builds both. The addon is not
+in `make all` because it needs FreeCAD; `make deps` reports whether it is
+available.
 
 ## Dither styles (`out/dither_*.png`, sheet `dither_sheet.png`)
 

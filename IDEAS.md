@@ -34,6 +34,12 @@ numbered note in `docs/`. Mark status inline.
 - **Grating film slip-over for night** — 500 l/mm, every streetlight writes
   its spectrum 34 mm long. Disperses, does not focus. → docs/09
 - **Photon sieve** — zone plate rings as scattered holes; less halo. → docs/09
+- **Concave grating spectrograph box** — grating film on a makeup mirror,
+  slit and detector strip on the Rowland circle, Pi camera reads the
+  spectrum. Streetlight fingerprints at night; spectrum of the day on the
+  receipt roll. Ray-traced in FreeCAD: focus 0.14 mm, ~2 mm astigmatism. → docs/10
+- **Circular constant-pitch aperture** — diffractive axicon; every night
+  light a disc inside a rainbow ring. → docs/10
 - **MURA coded aperture plate** — thousands of times the light, decoded in
   software at ~100 points across; the raw capture is its own image. → docs/08
 - **Crossed slits at two depths** — anamorphic 2:1 pinhole. → docs/08
@@ -87,6 +93,9 @@ numbered note in `docs/`. Mark status inline.
   relay camera.
 
 ## Dead ends, kept for the record
+
+- Curving the grating film at the pinhole: the hole samples a patch too
+  small for curvature to matter.
 
 - A linear grating as the lens: no optical power, it only disperses.
 

@@ -23,6 +23,7 @@ Pictures of all of it are in [mockups/](mockups/README.md): simulated output loo
 | [docs/07-wet-plate-pinhole.md](docs/07-wet-plate-pinhole.md) | Wet plate collodion through a pinhole: the wet-window clock, exposure, plate back, chemistry, day-one plan |
 | [docs/08-apertures-and-dither.md](docs/08-apertures-and-dither.md) | Slits, shaped holes, zone plate, coded aperture, anaglyph holes, slit-scan, where moire really comes from, dither catalogue |
 | [docs/09-diffraction-grating.md](docs/09-diffraction-grating.md) | Grating as lens: linear grating disperses (night spectra), zone plate focuses; numbers, chromatic behaviour, digital deconvolution, how to make one |
+| [docs/10-curved-grating.md](docs/10-curved-grating.md) | Curved grating: the Rowland concave-grating spectrograph box, rainbow-ring aperture, FreeCAD Optics Workbench ray traces and what they can and cannot simulate |
 
 ## Where this is headed
 
@@ -34,6 +35,7 @@ box is the sculpture and the screen beside it shows what the box has seen.
 Next steps once a box size is chosen:
 
 - [x] Mockups: simulated looks, cross-section diagrams, 3D cutaway (mockups/)
+- [x] FreeCAD Optics Workbench ray traces of the grating ideas (make optics)
 - [ ] Pick box depth and screen size (sets hole diameter and field of view)
 - [ ] Decide on a swappable back: screen + camera vs plate holder
 - [ ] build123d model of the box, pinhole plate, and camera mount

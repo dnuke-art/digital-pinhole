@@ -5,6 +5,8 @@
 #   make experiments  odd apertures + dithers     -> mockups/out/experiments_sheet.png, dither_sheet.png
 #   make gratings   grating + zone plate          -> mockups/out/grating_sheet.png
 #   make render     3D section of the relay box   -> mockups/out/render_relay_cutaway.png
+#   make curved     curved gratings               -> mockups/out/curved_grating_sheet.png
+#   make optics     FreeCAD Optics Workbench ray traces -> mockups/out/optics_*.png (needs freecadcmd + the addon)
 #   make photos     fetch the sample photos (picsum.photos) into mockups/src
 #   make deps       check python modules and openscad
 #   make clean      remove generated images; make distclean also removes the sample photos
@@ -24,17 +26,22 @@ EXPERIMENTS := $(OUT)/experiments_sheet.png
 DITHERS     := $(OUT)/dither_sheet.png
 GRATINGS    := $(OUT)/grating_sheet.png
 RENDER      := $(OUT)/render_relay_cutaway.png
+CURVED      := $(OUT)/curved_grating_sheet.png
+OPTICS      := $(OUT)/optics_grating.png $(OUT)/optics_rowland.png
+FREECADCMD  ?= $(firstword $(wildcard $(HOME)/.cache/featuretree/freecad/squashfs-root/usr/bin/freecadcmd /tmp/squashfs-root/usr/bin/freecadcmd) freecadcmd)
 
-.PHONY: all looks diagrams experiments gratings render photos deps clean distclean help
+.PHONY: all looks diagrams experiments gratings curved render optics photos deps clean distclean help
 .DELETE_ON_ERROR:
 
-all: looks diagrams experiments gratings render
+all: looks diagrams experiments gratings curved render
 
 looks:       $(LOOKS)
 diagrams:    $(DIAGRAMS)
 experiments: $(EXPERIMENTS)
 gratings:    $(GRATINGS)
 render:      $(RENDER)
+curved:      $(CURVED)
+optics:      $(OPTICS)
 photos:      $(PHOTOS)
 
 $(SRC)/pic_%.jpg:
@@ -57,10 +64,24 @@ $(GRATINGS): $(M)/looks3.py $(M)/looks2.py $(M)/looks.py $(PHOTOS)
 $(RENDER): $(M)/render3d.py
 	$(PYTHON) $(M)/render3d.py
 
+$(CURVED): $(M)/looks4.py $(M)/looks3.py $(M)/looks2.py $(M)/looks.py $(PHOTOS)
+	$(PYTHON) $(M)/looks4.py
+
+# FreeCAD Optics Workbench ray traces. Not part of 'all': needs FreeCAD's own python (freecadcmd) and the
+# OpticsWorkbench addon (git clone https://github.com/chbergmann/OpticsWorkbench ~/.local/share/FreeCAD/Mod/OpticsWorkbench).
+$(OUT)/optics_%.json: $(M)/fc_optics.py
+	@mkdir -p $(OUT)
+	QT_QPA_PLATFORM=offscreen SCENE=$* OUT_JSON=$(abspath $@) $(FREECADCMD) $(M)/fc_optics.py
+
+$(OUT)/optics_%.png: $(OUT)/optics_%.json $(M)/optics_plot.py $(M)/looks3.py
+	$(PYTHON) $(M)/optics_plot.py $<
+
 deps:
 	@$(PYTHON) -c "import numpy, PIL, matplotlib, scipy" && echo "python: numpy PIL matplotlib scipy ok" || (echo "missing: pip install numpy pillow matplotlib scipy"; exit 1)
 	@$(PYTHON) -c "import build123d" 2>/dev/null && echo "python: build123d ok" || echo "build123d missing (only needed for 'make render'): pip install build123d"
 	@command -v $(OPENSCAD) >/dev/null && echo "openscad: $$($(OPENSCAD) --version 2>&1 | head -1)" || echo "openscad missing (only needed for 'make render')"
+	@[ -x "$(FREECADCMD)" ] && echo "freecadcmd: $(FREECADCMD)" || echo "freecadcmd missing (only needed for 'make optics'): set FREECADCMD or extract the FreeCAD AppImage"
+	@[ -d "$(HOME)/.local/share/FreeCAD/Mod/OpticsWorkbench" ] && echo "OpticsWorkbench addon ok" || echo "OpticsWorkbench addon missing (only needed for 'make optics')"
 
 clean:
 	rm -rf $(OUT)

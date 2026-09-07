@@ -283,8 +283,43 @@ def show():
     title(ax, "8. Show layout", "elevation; the box faces the window, everything it makes hangs beside it")
     save(f, "08_show")
 
+# 9 ------------------------------------------------------------ concave grating spectrograph box
+def rowland():
+    f, ax = fig(10, 6.5); R = 400; rc = R / 2
+    # Rowland circle, drawn in box coordinates: grating vertex at origin, centre of curvature at (R, 0)
+    th = np.linspace(0, 2 * np.pi, 400); ax.plot(rc - rc * np.cos(th), rc * np.sin(th), color="#bbb", lw=0.8, ls="--")
+    # box: a shallow wedge holding grating, slit and detector
+    ax.add_patch(Polygon([(-16, -60), (-16, 60), (330, 175), (430, 175), (430, -95), (330, -95)], closed=True, fc=INT, ec="#222", lw=0.8, zorder=1))
+    wall(ax, -28, -70, 12, 140)                                           # grating mount
+    yy = np.linspace(-40, 40, 60); ax.plot((yy ** 2) / (2 * R), yy, color="#c9a227", lw=4, zorder=5)
+    for k in range(-38, 39, 4): ax.plot([(k ** 2) / (2 * R) - 1.5, (k ** 2) / (2 * R) + 1.5], [k, k], color="#7a5c00", lw=0.6, zorder=6)
+    a = np.radians(40); S = (rc + rc * np.cos(a), rc * np.sin(a))        # slit at phi = 40 deg (alpha = 20 deg incidence)
+    ax.add_patch(Rectangle((S[0] - 3, S[1] - 12), 6, 24, fc=WALL, ec="#222", lw=0.6, zorder=6))
+    ax.plot([S[0] - 3, S[0] + 3], [S[1], S[1]], color=CONE, lw=2, zorder=7)
+    phis = np.radians(np.linspace(-45, 35, 80)); ax.plot(rc + rc * np.cos(phis), rc * np.sin(phis), color=PAPER, lw=6, zorder=5)
+    # rays: slit -> grating -> spectrum on the arc
+    for y in (-30, 0, 30): ax.plot([S[0], (y ** 2) / (2 * R)], [S[1], y], color=CONE, lw=0.8, alpha=0.8, zorder=4)
+    for wl, col in [(400, "#6a3df5"), (550, "#3ad33a"), (700, "#e02020")]:
+        beta = np.arcsin(np.sin(np.radians(20)) - wl * 1e-3 / 2.0); phi = 2 * beta
+        P = (rc + rc * np.cos(phi), rc * np.sin(phi))
+        for y in (-30, 0, 30): ax.plot([(y ** 2) / (2 * R), P[0]], [y, P[1]], color=col, lw=0.8, alpha=0.9, zorder=4)
+        ax.plot(P[0], P[1], "o", color=col, ms=5, zorder=8)
+    lens = camera(ax, 300, 20, pointing=1)
+    ax.add_patch(Polygon([lens, (rc + rc * np.cos(np.radians(-40)), rc * np.sin(np.radians(-40))), (rc + rc * np.cos(np.radians(30)), rc * np.sin(np.radians(30)))], fc=CAM, ec=CAM, ls="--", lw=0.5, alpha=0.15, zorder=2))
+    ax.annotate("", xy=(S[0] + 22, S[1] + 62), xytext=(S[0] + 4, S[1] + 14), arrowprops=dict(arrowstyle="<-", color="#c9a227", lw=1.2))
+    ax.text(S[0] + 26, S[1] + 66, "scene,\nthrough the slit", fontsize=8.5, color="#a58419", va="bottom", ha="center")
+    note(ax, (2, 0), (-60, 120), "concave reflection grating\nR = 400 mm, 500 l/mm\n(grating film on a\nmakeup mirror)", ha="right")
+    note(ax, (S[0], S[1] - 12), (S[0] - 40, -75), "0.5 mm slit on the\nRowland circle,\n20° off the normal")
+    note(ax, (rc + rc * np.cos(np.radians(10)), rc * np.sin(np.radians(10))), (150, 200), "spectrum forms on the circle:\nred near the centre of\ncurvature, violet 60 mm along")
+    note(ax, (lens[0], 20), (240, -60), "Pi camera photographs\nthe spectrum strip", ha="right")
+    ax.text(rc, -130, "Rowland circle: diameter = mirror radius, tangent to the grating. Anything on it images to the circle, dispersed. No lens anywhere.",
+            ha="center", fontsize=8.5, color="#333")
+    ax.set_xlim(-140, 470); ax.set_ylim(-150, 250)
+    title(ax, "9. Concave grating spectrograph in a box", "top view; the curved grating is both the lens and the prism (Rowland, 1882)")
+    save(f, "09_rowland")
+
 def sheet():
-    names = ["01_relay", "02_wetplate", "03_swappable", "04_pihq", "05_bodycap", "06_suntrace", "07_dubroni", "08_show"]
+    names = ["01_relay", "02_wetplate", "03_swappable", "04_pihq", "05_bodycap", "06_suntrace", "07_dubroni", "08_show", "09_rowland"]
     ims = [Image.open(f"{OUT}/diag_{n}.png").convert("RGB") for n in names]
     cell = (900, 600); cols = 2; pad = 20; rows = (len(ims) + 1) // 2
     S = Image.new("RGB", (cols * (cell[0] + pad) + pad, rows * (cell[1] + pad) + pad), "white")
@@ -294,5 +329,5 @@ def sheet():
     S.save(f"{OUT}/diagrams_sheet.png"); print("wrote diagrams_sheet.png")
 
 if __name__ == "__main__":
-    for fn in (relay, wetplate, swappable, pihq, bodycap, suntrace, dubroni, show): fn()
+    for fn in (relay, wetplate, swappable, pihq, bodycap, suntrace, dubroni, show, rowland): fn()
     sheet()
