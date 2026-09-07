@@ -36,6 +36,7 @@ FREECADCMD       ?= $(if $(FREECAD_APPIMAGE),$(FREECAD_APPIMAGE) freecadcmd,$(fi
 
 .PHONY: all looks diagrams experiments gratings curved render optics photos deps clean distclean help
 .DELETE_ON_ERROR:
+.SECONDARY:            # keep intermediate files (the optics JSON hit lists) after their PNGs are built
 
 all: looks diagrams experiments gratings curved render
 
