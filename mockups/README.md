@@ -66,12 +66,13 @@ rainbow rings. Physics in [docs/10](../docs/10-curved-grating.md).
 
 ## FreeCAD ray traces (`out/optics_*.png`)
 
-`fc_optics.py` runs under FreeCAD's own python (freecadcmd) with the
-OpticsWorkbench addon and writes hit coordinates to JSON; `optics_plot.py`
-plots them. Two scenes: a 500 l/mm film behind the pinhole, and the Rowland
-concave-grating spectrograph. `make optics` builds both. The addon is not
-in `make all` because it needs FreeCAD; `make deps` reports whether it is
-available.
+`fc_optics.py` runs under FreeCAD's own python (the AppImage in `/opt`,
+`freecadcmd` entry point, offscreen Qt) with the OpticsWorkbench addon and writes hit
+coordinates to JSON; `optics_plot.py` plots them. Two scenes: a 500 l/mm
+film behind the pinhole, and the Rowland concave-grating spectrograph.
+`make optics` builds both. Not in `make all` because it needs FreeCAD;
+`make deps` reports whether the AppImage and the addon are available.
+Override with `make optics FREECADCMD="path/to/freecadcmd"`.
 
 ## Dither styles (`out/dither_*.png`, sheet `dither_sheet.png`)
 

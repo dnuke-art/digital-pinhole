@@ -73,8 +73,12 @@ Thorlabs.
 FreeCAD's Optics Workbench addon (chbergmann/OpticsWorkbench) is a
 geometric ray tracer: reflection, refraction, absorbers, and diffraction
 gratings via the grating equation. It runs headless under FreeCAD's own
-python once two GUI hooks are stubbed. The script is `mockups/fc_optics.py`,
-the plotter `mockups/optics_plot.py`, target `make optics`.
+python once two GUI hooks are stubbed: the AppImage in `/opt` run through
+its `freecadcmd` entry point with `QT_QPA_PLATFORM=offscreen` (without the
+offscreen setting it waits for a display; with `--console` instead of
+`freecadcmd` it finishes the script and then sits in an interactive prompt). The script is `mockups/fc_optics.py`,
+the plotter `mockups/optics_plot.py`, target `make optics`. The addon lives
+in `~/.local/share/FreeCAD/Mod/OpticsWorkbench`.
 
 **Linear grating behind the pinhole** (`optics_grating.png`): 315 rays,
 15 scene directions, 7 wavelengths, orders -1, 0, +1, onto the 250 x 200 mm
