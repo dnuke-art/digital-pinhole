@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+mockups/out/stl/
+mockups/out/relay.scad
