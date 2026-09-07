@@ -8,7 +8,7 @@ Short answer: yes, three ways, and the interesting one is a camera obscura
 with a small camera inside looking back at the projection.
 
 Loose ideas go in [IDEAS.md](IDEAS.md); the ones that grow get a numbered note below.
-Pictures of all of it are in [mockups/](mockups/README.md): simulated output looks, cross-section diagrams, a 3D cutaway.
+Pictures of all of it are in [mockups/](mockups/README.md): simulated output looks, cross-section diagrams, a 3D cutaway. `make` regenerates them.
 
 ## Documents
 

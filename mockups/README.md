@@ -1,7 +1,15 @@
 # Mockups
 
-Two generators, both plain Python (numpy, Pillow, matplotlib), plus a 3D
-cutaway of the relay box (build123d + OpenSCAD). Regenerate with:
+Plain Python generators (numpy, Pillow, matplotlib, scipy) plus a 3D
+section of the relay box (build123d + OpenSCAD). From the repo root:
+
+    make            # everything, about half a minute
+    make deps       # check what is installed
+    make looks | diagrams | experiments | gratings | render
+    make photos     # fetch the sample photos (done automatically when needed)
+    make clean      # remove generated images
+
+Or run a generator directly:
 
     python3 mockups/looks.py       # simulated output images -> out/look_*.png, looks_sheet.png
     python3 mockups/diagrams.py    # cross-section diagrams  -> out/diag_*.png, diagrams_sheet.png
