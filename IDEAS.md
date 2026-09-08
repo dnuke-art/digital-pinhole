@@ -49,6 +49,17 @@ numbered note in `docs/`. Mark status inline.
 - **Lined screen for moire** — a hole array cannot make moire (linear);
   a printed grid on the screen can. Swappable screen. → docs/08
 
+- **110 cartridge pinhole camera** — the cartridge is the film gate, the
+  transport and the pressure plate, so the camera is a printed box with a
+  0.2 mm hole, a thumbwheel and a sliding shutter. Lomography still makes
+  the film; a printed Paterson-fit reel develops it at home. Existing
+  design: bergytone's 110 pinhole on Thingiverse (0.18 mm hole). Hand-out
+  camera for the show; caffenol develops it.
+- **Printed lens for the 110 box** — Amos Dudley's SLO (Downloads has the
+  STL + .form set, no source) printed its lens on a Form 2 and polished it.
+  A single printed element over the 110 gate is the next step up from the
+  hole.
+
 ## Outputs
 
 - **Receipt printer on the box** — ESC/POS, dither, auto-cutter, prints
