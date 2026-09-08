@@ -99,5 +99,10 @@ for name, meta in params.items():
     out["rays"].append(dict(name=name, hits=hits, **meta))
 out["meta"] = {k: v for k, v in params.items() if k.startswith("_")}
 json.dump(out, open(OUT_JSON, "w"))
+FCSTD = os.environ.get("OUT_FCSTD", OUT_JSON.rsplit(".", 1)[0] + ".FCStd")
+for o in doc.Objects:                                       # the ray proxies keep a reference to the last object hit,
+    if hasattr(getattr(o, "Proxy", None), "lastObject"):    # which FreeCAD cannot serialise; drop it before saving
+        o.Proxy.lastObject = None
+doc.saveAs(FCSTD)                                          # open this in FreeCAD to see the rays (needs the addon installed)
 n_hit = sum(1 for r in out["rays"] if r["hits"])
-print(f"{SCENE}: {len(out['rays'])} rays, {n_hit} with detector hits -> {OUT_JSON}")
+print(f"{SCENE}: {len(out['rays'])} rays, {n_hit} with detector hits -> {OUT_JSON}, {FCSTD}")

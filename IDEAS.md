@@ -57,14 +57,32 @@ numbered note in `docs/`. Mark status inline.
   camera for the show; caffenol develops it.
 - **Printed lens for the 110 box** — Amos Dudley's SLO (Downloads has the
   STL + .form set, no source) printed its lens on a Form 2 and polished it.
+  Dan has printed lenses and smoothed them by resin dip and spray lacquer.
   A single printed element over the 110 gate is the next step up from the
-  hole.
+  hole; the tiny format forgives a rough lens.
+- **Printed lens plate for the relay box** — swap the pinhole plate for a
+  printed singlet at f/4 to f/8: 10 to 12 stops brighter, so the screen goes
+  live on the Pi camera. Pinhole mode is slow, lens mode is a live camera
+  obscura. The Pi's live view is also the fastest way to judge a printed lens.
+- **Droplet lens** — a drop of clear UV resin cured on a printed ring forms a
+  spherical cap by surface tension; the print is only the holder and the
+  liquid makes the optical surface. No sanding, repeatable by drop volume.
+- **Spin-cure the resin dip** — rotate the dipped lens slowly under the UV
+  lamp so the coat does not sag into a wedge at the bottom edge.
 
 - **Peel-apart pinhole** — only One Instant (Supersense, Vienna) still makes
   pack film, hand-made, Type 100 size, plus a cheaper DIY kit since late
   2023. ~ISO 100: ~1.6 s at f/200 in sun. Do not print the rollers: build a
   pinhole body that takes a Polaroid 405 back, or put a hole in a Land
   camera lens board. The B&W POS/NEG stock yields a reclaimable negative.
+- **Home-made peel-apart (diffusion transfer)** — expose a paper negative,
+  sandwich it face to face with a receiver sheet with a developer paste
+  between, wait five minutes in the dark, peel. The Photrio "Diffusion
+  Transfer Printing recipes" thread is the working lab notebook (receiver
+  nucleation layers, thiosulphate/phenol paste). Not instant in the camera,
+  but a positive and a negative from one paper exposure, and the same
+  rollers-or-squeegee question as pack film. The Supersense DIY kit is the
+  packaged version of the same idea.
 - **Instax pinhole** — integral film that is cheap and everywhere, ISO 800,
   ~1/9 s at f/150 in sun. Printed bodies exist; Jollylook sells hand-crank
   Instax backs. The hand-out camera with a print in 90 s.
