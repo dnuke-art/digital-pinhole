@@ -78,7 +78,9 @@ its `freecadcmd` entry point with `QT_QPA_PLATFORM=offscreen` (without the
 offscreen setting it waits for a display; with `--console` instead of
 `freecadcmd` it finishes the script and then sits in an interactive prompt). The script is `mockups/fc_optics.py`,
 the plotter `mockups/optics_plot.py`, target `make optics`. The addon lives
-in `~/.local/share/FreeCAD/Mod/OpticsWorkbench`.
+in `~/.local/share/FreeCAD/Mod/OpticsWorkbench`. The script also saves the
+FreeCAD documents (`mockups/out/optics_*.FCStd`), which open in the GUI with
+the addon installed and show the rays, grating and detector.
 
 **Linear grating behind the pinhole** (`optics_grating.png`): 315 rays,
 15 scene directions, 7 wavelengths, orders -1, 0, +1, onto the 250 x 200 mm

@@ -24,6 +24,7 @@ Pictures of all of it are in [mockups/](mockups/README.md): simulated output loo
 | [docs/08-apertures-and-dither.md](docs/08-apertures-and-dither.md) | Slits, shaped holes, zone plate, coded aperture, anaglyph holes, slit-scan, where moire really comes from, dither catalogue |
 | [docs/09-diffraction-grating.md](docs/09-diffraction-grating.md) | Grating as lens: linear grating disperses (night spectra), zone plate focuses; numbers, chromatic behaviour, digital deconvolution, how to make one |
 | [docs/10-curved-grating.md](docs/10-curved-grating.md) | Curved grating: the Rowland concave-grating spectrograph box, rainbow-ring aperture, FreeCAD Optics Workbench ray traces and what they can and cannot simulate |
+| [docs/11-printed-lenses-110-and-instant.md](docs/11-printed-lenses-110-and-instant.md) | The SLO and printed lenses (dip, spin-cure, droplet lens, the relay box as test rig), the 110 cartridge camera, peel-apart and Instax, home-made diffusion transfer, Instax Link as digital output |
 
 ## Where this is headed
 
@@ -44,3 +45,5 @@ Next steps once a box size is chosen:
 - [ ] Receipt printer output: ESC/POS over USB, dither pipeline, auto-cutter
 - [ ] Digital negative pipeline: invert, curve, print transparency, cyanotype contact print
 - [ ] Wet plate: kit, six 4x5 plates, silver-proof holder, one sunny afternoon
+- [ ] Lens plate for the relay box (live mode) and Instax Link output
+- [ ] 110 pinhole box and a printed Pa-110 developing reel
