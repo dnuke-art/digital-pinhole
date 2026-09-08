@@ -60,7 +60,26 @@ numbered note in `docs/`. Mark status inline.
   A single printed element over the 110 gate is the next step up from the
   hole.
 
+- **Peel-apart pinhole** — only One Instant (Supersense, Vienna) still makes
+  pack film, hand-made, Type 100 size, plus a cheaper DIY kit since late
+  2023. ~ISO 100: ~1.6 s at f/200 in sun. Do not print the rollers: build a
+  pinhole body that takes a Polaroid 405 back, or put a hole in a Land
+  camera lens board. The B&W POS/NEG stock yields a reclaimable negative.
+- **Instax pinhole** — integral film that is cheap and everywhere, ISO 800,
+  ~1/9 s at f/150 in sun. Printed bodies exist; Jollylook sells hand-crank
+  Instax backs. The hand-out camera with a print in 90 s.
+
 ## Outputs
+
+- **Instax Link printer on the relay box** — the Pi prints each frame to
+  instant film over Bluetooth (javl/InstaxBLE). Wide Link is 800 x 1260 px,
+  far more than the pinhole's ~200 points. A real photograph pops out next
+  to the receipt.
+- **Peel-apart negative to cyanotype** — One Instant B&W POS/NEG: keep the
+  positive, contact print the peeled negative as a cyanotype. All analog,
+  all hand-made, two prints per exposure.
+- **Peel-apart image transfer** — pull early, press the wet negative onto
+  watercolor paper: pigment transfer, the classic pack-film manipulation.
 
 - **Receipt printer on the box** — ESC/POS, dither, auto-cutter, prints
   fade. Resolution match with the pinhole image is near perfect. → docs/05
